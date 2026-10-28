@@ -33,7 +33,7 @@ describe('Funcionalidade: Cadastro no Hub de Leitura', () => {
         cy.get('#terms-agreement').check();
         cy.get('#register-btn').click();
         cy.url().should('include', 'dashboard');
-        cy.get(username).should('contain', nome);
+        cy.get('#username').should('contain', nome);
     });
 
 });
