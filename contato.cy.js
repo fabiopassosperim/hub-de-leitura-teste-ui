@@ -21,7 +21,7 @@ describe("Funcionalidade: Contato", () => {
     cy.get('#message').type('Mensagem de teste')
     cy.get('#btn-submit').click()
     //Resultado esperado
-    cy.get('#alert.container').should('contain', 'Por favor, preencha o campo nome')
+    cy.get('#alert-container').should('contain', 'Por favor, preencha o campo nome')
   });
   
   it('Deve validar mensagem de erro ao enviar sem preencher e-mail', () => { 
@@ -31,7 +31,7 @@ describe("Funcionalidade: Contato", () => {
     cy.get('#message').type('Mensagem de teste')
     cy.get('#btn-submit').click()
     //Resultado esperado
-    cy.get('#alert.container').should('contain', 'Por favor, preencha o campo e-mail')
+    cy.get('#alert-container').should('contain', 'Por favor, preencha o campo e-mail')
   });
 
   it('Deve validar mensagem de erro ao enviar sem selecionar o assunto', () => { 
@@ -41,7 +41,7 @@ describe("Funcionalidade: Contato", () => {
     cy.get('#message').type('Mensagem de teste')
     cy.get('#btn-submit').click()
     //Resultado esperado
-    cy.get('#alert.container').should('contain', 'Por favor, selecione o Assunto')
+    cy.get('#alert-container').should('contain', 'Por favor, selecione o Assunto')
   });
 
   it('Deve validar mensagem de erro ao enviar sem preencher a mensagem', () => {
@@ -51,7 +51,7 @@ describe("Funcionalidade: Contato", () => {
     cy.get('#message').clear()
     cy.get('#btn-submit').click()
     //Resultado esperado
-    cy.get('#alert.container').should('contain', 'Por favor, escreva sua mensagem')
+    cy.get('#alert-container').should('contain', 'Por favor, escreva sua mensagem')
  });
 
 });
