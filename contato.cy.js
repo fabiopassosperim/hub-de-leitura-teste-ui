@@ -40,8 +40,6 @@ describe("Funcionalidade: Contato", () => {
     //Resultado esperado
     cy.get('#alert.container').should('contain', 'Por favor, selecione o Assunto')
 
-
-
     it('Deve validar mensagem de erro ao enviar sem preencher a mensagem'), () => { };
     cy.get('#name').type('Fabio Passos')
     cy.get('#email').type('fabio.passos.perim@gmail.com')
