@@ -13,10 +13,8 @@ describe('End to end: Cadastro e Login no Hub de Leitura', () => {
     const phone = faker.string.numeric(10);
     const password = faker.internet.password();
 
-    // 2. Acessar o site
-    cy.visit('http://localhost:3000/register');
-
-    // 3. Preencher e enviar o formulário de cadastro
+    // 2. Acessar o site e fazer cadastro
+    cy.visit('http://localhost:3000/register.html');
     cy.get('[href="/register.html"]').click()
     cy.get('#name').type(nome);
     cy.get('#email').type(email);
@@ -26,22 +24,22 @@ describe('End to end: Cadastro e Login no Hub de Leitura', () => {
     cy.get('#terms-agreement').check();
     cy.get('#register-btn').click();
 
-    // 4. Cadastro bem-sucedido
+    // 3. Cadastro bem-sucedido e logout
     cy.url().should('include', 'dashboard');
-
-    // Ajuste o seletor abaixo conforme o HTML da sua dashboard
     cy.get('#user-name').should('contain', nome);
+    cy.get('.user-actions > .btn-outline-danger').click();
 
-    // 5. Acessar o login
+    // 4. Acessar o login
     cy.visit('http://localhost:3000/login');
 
-    // 6. Preencher e enviar o formulário de login
+    // 5. Preencher e enviar o formulário de login
     cy.get('#email').type(email);
     cy.get('#password').type(password);
     cy.get('#login-btn').click();
 
-    // 7. Validar login bem-sucedido
+    // 6. Validar login bem-sucedido
     cy.url().should('include', 'dashboard');
+    cy.get('#user-name').should('contain', nome);
   });
 
 });
